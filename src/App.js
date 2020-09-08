@@ -3,6 +3,8 @@ import data from './data.json'
 import Products from './components/Products'
 import Filter from './components/Filter'
 import Cart from './components/Cart'
+import store from './store'
+import { Provider } from 'react-redux';
 
 function App() {
   const [item, setItem] = useState({
@@ -73,36 +75,38 @@ function App() {
   }
 
   return (
-    <div className="grid-container">
-      <header>
-        <a href="/">React Shopping Cart</a>
-      </header>
-      <main>
-        <div className="content">
-          <div className="main">
-            <Filter
-              count={item.products.length}
-              size={item.size}
-              sort={item.sort}
-              filterProducts={filterProducts}
-              sortProducts={sortProducts}
-            ></Filter>
-            <Products
-              products={item.products}
-              addToCart={addToCart}
-            ></Products>
+    <Provider store={store}>
+      <div className="grid-container">
+        <header>
+          <a href="/">React Shopping Cart</a>
+        </header>
+        <main>
+          <div className="content">
+            <div className="main">
+              <Filter
+                count={item.products.length}
+                size={item.size}
+                sort={item.sort}
+                filterProducts={filterProducts}
+                sortProducts={sortProducts}
+              ></Filter>
+              <Products
+                products={item.products}
+                addToCart={addToCart}
+              ></Products>
+            </div>
+            <div className="sidebar">
+              <Cart
+                cartItems={item.cartItems}
+                removeFromCart={removeFromCart}
+                createOrder={createOrder}
+              />
+            </div>
           </div>
-          <div className="sidebar">
-            <Cart
-              cartItems={item.cartItems}
-              removeFromCart={removeFromCart}
-              createOrder={createOrder}
-            />
-          </div>
-        </div>
-      </main>
-      <footer>All right is reserved.</footer>
-    </div>
+        </main>
+        <footer>All right is reserved.</footer>
+      </div>
+    </Provider>
   );
 }
 
