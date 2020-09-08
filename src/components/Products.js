@@ -10,7 +10,7 @@ const Products = ({ addToCart }) => {
 
   const [product, setProduct] = useState(null)
   const dispatch = useDispatch()
-  const products = useSelector(state => state.products.items)
+  const products = useSelector(state => state.products.filteredItems)
   
   useEffect(() => {
     dispatch(fetchProducts())

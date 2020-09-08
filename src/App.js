@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import data from './data.json'
 import Products from './components/Products'
 import Filter from './components/Filter'
 import Cart from './components/Cart'
@@ -8,7 +7,6 @@ import { Provider } from 'react-redux';
 
 function App() {
   const [item, setItem] = useState({
-    products: data.products,
     cartItems: localStorage.getItem("cartItems") ? 
       JSON.parse(localStorage.getItem("cartItems")) : [],
     size: "",
@@ -44,36 +42,7 @@ function App() {
     setItem({ ...item, cartItems });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }
-
-  const sortProducts = (event) => {
-    const sort = event.target.value;
-    console.log('sort', event.target.value);
-    setItem({...item,
-      sort: sort,
-      products: item.products.slice().sort((a, b) =>
-          sort === "lowest" ? 
-            a.price > b.price ? 1 : -1
-          : sort === "highest" ? 
-            a.price < b.price ? 1 : -1
-          : a._id < b._id ? 1 : -1
-        ),
-    });
-  }
-
-  const filterProducts = (event) => {
-    console.log(event.target.value);
-    if (event.target.value === "") {
-      setItem({...item, size: event.target.value, products: data.products });
-    } else {
-      setItem({...item,
-        size: event.target.value,
-        products: data.products.filter(
-          (product) => product.availableSizes.indexOf(event.target.value) >= 0
-        ),
-      });
-    }
-  }
-
+  
   return (
     <Provider store={store}>
       <div className="grid-container">
@@ -83,17 +52,8 @@ function App() {
         <main>
           <div className="content">
             <div className="main">
-              <Filter
-                count={item.products.length}
-                size={item.size}
-                sort={item.sort}
-                filterProducts={filterProducts}
-                sortProducts={sortProducts}
-              ></Filter>
-              <Products
-                products={item.products}
-                addToCart={addToCart}
-              ></Products>
+              <Filter />
+              <Products addToCart={addToCart} />
             </div>
             <div className="sidebar">
               <Cart
