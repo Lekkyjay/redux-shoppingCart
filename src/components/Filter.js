@@ -4,8 +4,6 @@ import { filterProducts, sortProducts } from "../actions/productActions"
 
 const Filter = () => {
 
-  // const size = useSelector(state => state.products.size)
-  // const sort = useSelector(state => state.products.sort)
   const products = useSelector(state => state.products.items)
   const filteredProducts = useSelector(state => state.products.filteredItems)
   const dispatch = useDispatch()
