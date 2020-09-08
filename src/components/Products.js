@@ -8,11 +8,11 @@ const Products = ({ products, addToCart }) => {
   const [product, setProduct] = useState(null)
 
   const openModal = (product) => {
-    setProduct({ product });
+    setProduct(product);
   };
 
   const closeModal = () => {
-    setProduct({ product: null });
+    setProduct(null);
   };
 
   
@@ -23,19 +23,13 @@ const Products = ({ products, addToCart }) => {
           {products.map((product) => (
             <li key={product._id}>
               <div className="product">
-                <a
-                  href={"#" + product._id}
-                  onClick={() => openModal(product)}
-                >
+                <a href={"#" + product._id} onClick={() => openModal(product)} >
                   <img src={product.image} alt={product.title}></img>
                   <p>{product.title}</p>
                 </a>
                 <div className="product-price">
                   <div>{formatCurrency(product.price)}</div>
-                  <button
-                    onClick={() => addToCart(product)}
-                    className="button primary"
-                  >
+                  <button onClick={() => addToCart(product)} className="button primary" >
                     Add To Cart
                   </button>
                 </div>
@@ -51,14 +45,11 @@ const Products = ({ products, addToCart }) => {
               x
             </button>
             <div className="product-details">
-              <img src={product.image} alt={product.title}></img>
+              <img src={ product.image } alt={ product.title }></img>
               <div className="product-details-description">
-                <p>
-                  <strong>{product.title}</strong>
-                </p>
-                <p>{product.description}</p>
-                <p>
-                  Avaiable Sizes:{" "}
+                <p> <strong>{ product.title }</strong> </p>
+                <p>{ product.description }</p>
+                <p> Avaiable Sizes:{" "}
                   {product.availableSizes.map((x) => (
                     <span>
                       {" "}
@@ -71,8 +62,8 @@ const Products = ({ products, addToCart }) => {
                   <button
                     className="button primary"
                     onClick={() => {
-                      this.props.addToCart(product);
-                      this.closeModal();
+                      addToCart(product);
+                      closeModal();
                     }}
                   >
                     Add To Cart
