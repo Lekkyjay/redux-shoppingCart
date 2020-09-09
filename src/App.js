@@ -4,28 +4,27 @@ import Filter from './components/Filter'
 import Cart from './components/Cart'
 import store from './store'
 import { Provider } from 'react-redux';
+import { Link, BrowserRouter, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage'
+import AdminPage from './pages/AdminPage'
 
 function App() {
     
   return (
     <Provider store={store}>
-      <div className="grid-container">
-        <header>
-          <a href="/">React Shopping Cart</a>
-        </header>
-        <main>
-          <div className="content">
-            <div className="main">
-              <Filter />
-              <Products />
-            </div>
-            <div className="sidebar">
-              <Cart />
-            </div>
-          </div>
-        </main>
-        <footer>All right is reserved.</footer>
-      </div>
+      <BrowserRouter>
+        <div className="grid-container">
+          <header>
+            <Link to="/">React Shopping Cart</Link>
+            <Link to="/admin">Admin</Link>
+          </header>
+          <main>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/admin" component={AdminPage} />
+          </main>
+          <footer>All right is reserved.</footer>
+        </div>
+      </BrowserRouter>
     </Provider>
   );
 }
