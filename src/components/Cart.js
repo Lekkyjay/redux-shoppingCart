@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import formatCurrency from "../util";
 import Fade from "react-reveal/Fade";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart } from '../actions/cartActions'
 
-const  Cart = ({ cartItems, removeFromCart, createOrder }) => {
+const  Cart = ({ createOrder }) => {
 
   const [client, setClient] = useState({
     name: "",
@@ -10,6 +12,9 @@ const  Cart = ({ cartItems, removeFromCart, createOrder }) => {
     address: "",
     showCheckout: false,
   })
+
+  const cartItems = useSelector(state => state.cart.cartItems)
+  const dispatch = useDispatch()
 
 
   const handleInput = (e) => {
@@ -51,7 +56,7 @@ const  Cart = ({ cartItems, removeFromCart, createOrder }) => {
                       {formatCurrency(item.price)} x {item.count}{" "}
                       <button
                         className="button"
-                        onClick={() => removeFromCart(item)} 
+                        onClick={() => dispatch(removeFromCart(item))} 
                       >
                         Remove
                       </button>
