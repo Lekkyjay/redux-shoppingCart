@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -9,14 +10,10 @@ app.use(bodyParser.json());
 app.use("/", express.static(__dirname + "/build"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 
-mongoose.connect(
-  process.env.MONGODB_URL || "mongodb://localhost/redux-shopping-cart-db",
-  {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.LOCALHOST_MONGODB_URL, 
+  { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, })
+  .then(() => { console.log('You are connected to MongoDB. Great!') })
+  .catch((err) => { console.log('Connection failed...' + err) });
 
 const Product = mongoose.model(
   "products",
