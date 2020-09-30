@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use("/", express.static(__dirname + "/build"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 
-mongoose.connect(process.env.LOCALHOST_MONGODB_URL, 
+mongoose.connect(process.env.MONGODB_URL, 
   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, })
   .then(() => { console.log('You are connected to MongoDB. Great!') })
   .catch((err) => { console.log('Connection failed...' + err) });

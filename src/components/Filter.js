@@ -12,15 +12,14 @@ const Filter = () => {
     <div className="filter">
       <div className="filter-result">{filteredProducts.length} Products</div>
       <div className="filter-sort">
-        Order{" "}
+        Price{" "}
         <select onChange={(e) => dispatch(sortProducts(filteredProducts, e.target.value))}>
-          <option value="latest">Latest</option>
           <option value="lowest">Lowest</option>
           <option value="highest">Highest</option>
         </select>
       </div>
       <div className="filter-size">
-        Filter{" "}
+        Size{" "}
         <select onChange={(e) => dispatch(filterProducts(products, e.target.value))}>
           <option value="">ALL</option>
           <option value="XS">XS</option>

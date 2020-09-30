@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
         <div className="grid-container">
           <header>
-            <Link to="/">React Shopping Cart</Link>
+            <Link to="/">Dress Shop</Link>
             <Link to="/admin">Admin</Link>
           </header>
           <main>
