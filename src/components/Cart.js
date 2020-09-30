@@ -47,7 +47,8 @@ const  Cart = () => {
         <div className="cart cart-header">Cart is empty</div>
       ) : (
         <div className="cart cart-header">
-          You have {cartItems.length} in the cart{" "}
+          <i className="fa cart-icon">&#xf07a;</i>
+          <span className='cart-badge'> { cartItems.length } </span>
         </div>
       )}
       

@@ -139,6 +139,27 @@ footer {
 }
 .cart-header {
   border-bottom: 0.1rem #c0c0c0 solid;
+  position: relative;
+  height: 100%;
+  height: 2.4rem;
+}
+.cart-header .cart-icon {
+  position: absolute;
+  right: 10%;
+  color: #ff8000;
+  font-size: 2.5rem;
+}
+.cart-header .cart-badge {
+  display: inline-block;
+  background: #000;
+  color: #ff8000;
+  border-radius: 50%;
+  width: 2rem;
+  text-align: center;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  padding-top: 2px;
 }
 .cart-items {
   padding: 0;

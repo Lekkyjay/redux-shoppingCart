@@ -75,7 +75,7 @@ const Products = () => {
                   <button
                     className="button primary"
                     onClick={() => {
-                      addToCart(product);
+                      dispatch(addToCart(product));
                       closeModal();
                     }}
                   >
