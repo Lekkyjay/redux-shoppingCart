@@ -47,6 +47,24 @@ header a {
   color: #ffffff;
   text-decoration: none;
 }
+
+header ul {
+  list-style-type: none;
+}
+
+header ul li {
+  display: inline;
+}
+
+header ul li span {
+  padding: 0 0 5px 10px;
+  cursor: pointer;
+}
+
+header ul li span:hover {
+  color: #ff8000;
+}
+
 main {
   grid-area: main;
 }

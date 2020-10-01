@@ -3,10 +3,15 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
 const bcrypt = require('bcryptjs');
+const cors = require("cors");
 require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(
+  cors({ origin: "http://localhost:3000", credentials: true })
+);
 
 app.use("/", express.static(__dirname + "/build"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
@@ -139,5 +144,5 @@ app.delete("/api/orders/:id", async (req, res) => {
   res.send(order);
 });
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => console.log("server running at http://localhost:5000"));
+const port = process.env.PORT || 4000;
+app.listen(port, () => console.log("server running at http://localhost:4000"));
