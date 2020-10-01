@@ -43,9 +43,7 @@ app.delete("/api/products/:id", async (req, res) => {
   res.send(deletedProduct);
 });
 
-const Order = mongoose.model(
-  "order",
-  new mongoose.Schema(
+const Order = mongoose.model("order", new mongoose.Schema(
     {
       _id: { type: String, default: shortid.generate },
       email: String,
@@ -66,6 +64,14 @@ const Order = mongoose.model(
     }
   )
 );
+
+const User = mongoose.model("user", new mongoose.Schema(
+  {
+    _id: { type: String, default: shortid.generate },
+    email: String,
+    password: String
+  }
+));
 
 app.post("/api/orders", async (req, res) => {
   if (
