@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
+const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const app = express();
@@ -72,6 +73,31 @@ const User = mongoose.model("user", new mongoose.Schema(
     password: String
   }
 ));
+
+//Register new user
+app.post('/register', async(req, res) => {
+  //Check if user already exist in the DB
+  const emailExist = await User.findOne({email: req.body.email});
+  if (emailExist) return res.status(400).send('Email already exists');
+
+  //Hash the password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+  //Register new user
+  const user = new User({
+    email: req.body.email,
+    password: hashedPassword
+  });
+
+  try {
+    const savedUser = await user.save();
+    res.send({user: user._id});
+  }
+  catch (err) {
+    res.status(400).send(err);
+  }
+})
 
 app.post("/api/orders", async (req, res) => {
   if (
