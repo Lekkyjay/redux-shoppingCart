@@ -92,12 +92,30 @@ app.post('/register', async(req, res) => {
 
   try {
     const savedUser = await user.save();
-    res.send({user: user._id});
+    res.send("You have been registered!");
   }
   catch (err) {
     res.status(400).send(err);
   }
 })
+
+
+//Login user
+app.post('/login', async(req, res) => {
+  //Check if the user exists in the DB
+  const user = await User.findOne({email: req.body.email});
+  if (!user) return res.status(400).send('Email or password is wrong');
+
+  //Check if user's password is correct
+  const validPassword = await bcrypt.compare(req.body.password, user.password);
+  
+  //If password is not valid. Send error message
+  if (!validPassword) return res.status(400).send('Email or passworddd is wrong');
+
+  //If password is valid. Send back user_id
+  res.send({user: user._id});
+})
+
 
 app.post("/api/orders", async (req, res) => {
   if (
