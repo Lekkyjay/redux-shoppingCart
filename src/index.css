@@ -130,6 +130,7 @@ footer {
 .product img {
   max-width: 37rem;
   max-height: 37rem;
+  width: 100%;
 }
 .product-price {
   display: flex;

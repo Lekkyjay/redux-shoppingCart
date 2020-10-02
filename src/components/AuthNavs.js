@@ -24,7 +24,7 @@ const AuthNavs = () => {
         </div>
       ) : (
         <div>
-          <button onClick={login}>Login/Register</button>
+          <button onClick={login}>Login</button>
         </div>
       )}
     </nav>
