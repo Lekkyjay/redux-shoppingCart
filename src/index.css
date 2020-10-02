@@ -47,6 +47,42 @@ header a {
   color: #ffffff;
   text-decoration: none;
 }
+
+header ul {
+  list-style-type: none;
+}
+
+header ul li {
+  display: inline;
+}
+
+header ul li span {
+  padding: 0 0 5px 10px;
+  cursor: pointer;
+}
+
+header ul li span:hover {
+  color: #ff8000;
+}
+
+.login, .register {
+  display: flex;
+  transform: translateY(50%);
+  flex-direction: column;
+  align-items: center;
+}
+
+.login input,
+.register input {
+  width: 30%;
+  margin: 10px;
+}
+
+.login .login-register button,
+.register .login-register button {
+  margin: 10px;
+}
+
 main {
   grid-area: main;
 }
@@ -94,6 +130,7 @@ footer {
 .product img {
   max-width: 37rem;
   max-height: 37rem;
+  width: 100%;
 }
 .product-price {
   display: flex;
