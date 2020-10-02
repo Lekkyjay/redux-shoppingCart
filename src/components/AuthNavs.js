@@ -7,7 +7,7 @@ const AuthNavs = () => {
   const history = useHistory()
 
   const login = () => history.push('/login')
-  const register = () => history.push('/register')
+  const admin = () => history.push('/admin')
 
   const logout = () => {
     localStorage.setItem('shopping-user', '')
@@ -18,11 +18,13 @@ const AuthNavs = () => {
   return (
     <nav>
       {authUser ? (
-        <button onClick={logout}>Logout</button>
+        <div>
+          <button onClick={logout}>Logout</button>
+          <button onClick={admin}>Admin</button>
+        </div>
       ) : (
         <div>
-          <button onClick={login}>Login</button>
-          <button onClick={register}>Register</button>
+          <button onClick={login}>Login/Register</button>
         </div>
       )}
     </nav>

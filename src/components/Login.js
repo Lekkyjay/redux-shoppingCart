@@ -29,10 +29,13 @@ const Login = () => {
   return (
     <div className="login">
       <h1>Login</h1>
-      <input placeholder="username" onChange={(e) => setEmail(e.target.value)} />
+      <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
       <input placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={loginUser}>Login</button>
-      <button onClick={register}>Register</button>
+      <div className="login-register">
+        <button onClick={loginUser}>Login</button>
+        <span>/</span>
+        <button onClick={register}>Register</button>
+      </div>
     </div>
   )
 }
