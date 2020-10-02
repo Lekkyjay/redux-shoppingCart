@@ -65,19 +65,21 @@ header ul li span:hover {
   color: #ff8000;
 }
 
-.login {
+.login, .register {
   display: flex;
   transform: translateY(50%);
   flex-direction: column;
   align-items: center;
 }
 
-.login input {
+.login input,
+.register input {
   width: 30%;
   margin: 10px;
 }
 
-.login .login-register button {
+.login .login-register button,
+.register .login-register button {
   margin: 10px;
 }
 
